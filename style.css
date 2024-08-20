@@ -1,0 +1,355 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* font-family: "Montserrat", system-ui; */
+
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+    background-image: url('/images/crochet1.jpeg'); /* Cambia esto por la ruta de tu imagen de fondo */
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    position: relative;
+    min-height: 100vh;
+    align-items: center;
+    color: white; 
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7); 
+    padding-bottom: 300px; 
+    transition: background-color 0.3s ease; /* Transición para el color de fondo si deseas */
+}
+
+.menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    color: rgba(0, 0, 0, 0);
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.menu .navbar ul li {
+    position: relative;
+    float: left;
+    padding-bottom: 50px;
+}
+
+.menu .navbar ul li a {
+    font-size: 18px;
+    padding: 45px;
+    padding-bottom: 0%;
+    color: rgb(203, 129, 238);
+    display: block;
+    font-weight: bold;
+    transition: color 0.3s ease; /* Transición suave para el color del texto */
+}
+
+.menu .navbar ul li a:hover {
+    color: rgb(247, 35, 194);
+}
+
+.icons {
+    display: flex;
+}
+
+.icons i {
+    font-size: 25px;
+    color: rgb(177, 68, 177);
+    margin-right: 15px;
+    cursor: pointer;
+    transition: color 0.3s ease; /* Transición suave para el color de los iconos */
+}
+
+.icons i:hover {
+    color: rgb(247, 35, 194); /* Cambié el color a uno más visible en el hover */
+}
+
+#menu {
+    display: none;
+}
+
+.menu-icono {
+    width: 25px;
+}
+
+.menu label {
+    cursor: pointer;
+    display: none;
+}
+
+.submenu {
+    position: relative;
+}
+
+.submenu #carrito {
+    display: none;
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Transiciones suaves para la visibilidad y el movimiento */
+}
+
+.submenu:hover #carrito {
+    display: block;
+    position: absolute;
+    right: 20px;
+    backdrop-filter: blur(10px);
+    top: 100%;
+    z-index: 1;
+    background-color: white;
+    padding: 20px;
+    min-width: 400px;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#carrito {
+    opacity: 0;
+    transform: translateY(-20px); }
+}
+
+table {
+    width: 100%;
+}
+
+th, td {
+    color: black;
+}
+
+.borrar {
+    background-color: white;
+    border-radius: 50%;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: black;
+    font-weight: 800;
+    transition: background-color 0.3s ease, color 0.3s ease; }
+}
+
+.borrar:hover {
+    background-color: rgb(247, 35, 194); 
+    color: white;
+}
+
+.header-txt {
+    width: 40%;
+}
+
+.header-txt h1 {
+    font-size: 70px;
+    line-height: 80px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: black;
+    margin-bottom: 25px;
+    font-family: "Montserrat", system-ui;
+}
+
+.header-txt p {
+    font-size: 18px;
+    color: black;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+.prices {
+    display: flex;
+    margin: 20px 0;
+}
+
+.price-1 {
+    font-size: 30px;
+    color: black;
+    text-decoration-line: line-through;
+    margin-right: 25px;
+}
+
+.btn-1 {
+    display: inline-block;
+    padding: 13px 20px;
+    border-radius: 25px;
+    text-transform: uppercase;
+    color: white;
+    background-color: grey;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    font-family: "Montserrat", system-ui;
+    transition: background-color 0.3s ease; 
+}
+
+.btn-1:hover {
+    background-color: black;
+}
+
+hr {
+    border: 1px solid white;
+}
+
+.promos {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.promos h2 {
+    font-size: 50px;
+    color: black;
+    margin-bottom: 35px;
+}
+
+.categories {
+    text-align: left;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.categorie {
+    display: flex;
+    align-items: center;
+    padding: 35px;
+}
+
+.categorie img {
+    width: 150px;
+}
+
+.categorie-1 {
+    width: 50%;
+}
+
+.categorie-1 h3 {
+    color: black;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.categorie-1 p {
+    color: black;
+    font-size: 18px;
+}
+
+.categorie-img {
+    width: 50%;
+}
+
+.btn-3 {
+    font-family: 'Times New Roman', Times, serif;
+    display: inline-block;
+    padding: 10px 25px;
+    font-size: 14px;
+    color: black;
+    border: 1px solid grey;
+    border-radius: 25px;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+.btn-3:hover {
+    background-color: gray;
+    color: white;
+}
+
+.images {
+    width: 800px;
+    height: 380px;
+    margin: 100px auto; 
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.swiper-slide h3 {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    color: rgb(255, 255, 255);
+    font-family: "Montserrat", system-ui;
+    font-size: 25px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.swiper-slide h2 {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    color: rgb(197, 79, 172);
+    font-family: "Montserrat", system-ui;
+    font-size: 30px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 150%;
+    height: 150%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.rows {
+    width: 180px;
+    position: absolute;
+    right: 620px;
+    bottom: 280px;
+}
+
+.swiper-button-prev {
+    height: 50px;
+    width: 50px;
+    border: 2px solid white;
+    border-radius: 50%;
+    font-size: 15px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones suaves para el botón de navegación */
+}
+
+.swiper-button-next {
+    height: 50px;
+    width: 50px;
+    border: 2px solid white;
+    border-radius: 50%;
+    font-size: 15px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones suaves para el botón de navegación */
+}
+
+.swiper-button-prev::after {
+    font-size: 25px;
+    color: black;
+}
+
+.swiper-button-next::after {
+    font-size: 25px;
+    color: black;
+}
+
+@media (max-width: 991px) 
+    .menu {
+        padding: 30px;
+    }

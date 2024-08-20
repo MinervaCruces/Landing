@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="menu container">
+            <a href="#" class="logo">
+                <img src="./images/logocrochet.png" alt="Logo" id="logo-image" style="height: 100px;"> 
+            </a>
+            <input type="checkbox" id="menu">
+            <label for="menu">
+                <img src="#" alt="menu-icono">
+            </label>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="#">NOSOTROS</a></li>
+                    <li><a href="#">CURSOS</a></li>
+                    <li><a href="#">MATERIALES</a></li>
+                    <li><a href="#">ACCESORIOS</a></li>
+                </ul>
+            </nav>
+            <div>
+                <ul>
+                    <li class="submenu">
+                        <img src="svg/car.svg" id="img-carrito" alt="">
+                        <div id="carrito">
+                            <table id="lista-carrito">
+                                <thead>
+                                    <tr>
+                                        <th>Imagen</th>
+                                        <th>Nombre</th>
+                                        <th>Precio</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                            <a href="#" id="vaciar-carrito" class="btn-3">Vaciar carrito</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="icons">
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-x-twitter"></i>
+                <i class="fa-brands fa-instagram"></i>
+            </div>
+        </div>
+
+        <div class="header-content container">
+            <div class="header-txt">
+                <h1>GRANDES DESCUENTOS</h1>
+                <p>BUSCA TU ESTILO, APRENDE CON NOSOTROS</p>
+                <a href="#" class="btn-1">MAS</a>
+            </div>
+        </div>
+        
+        <div class="images">
+            <div class="swiper categories-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="categorie">
+                            <div class="categorie-1">
+                                <h3>CURSOS DE CALIDAD</h3>
+                                <div class="prices">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="categorie-img">
+                            <img src="images/Foto1-cursos crochet-original.webp" alt="">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="categorie">
+                            <div class="categorie-1">
+                                <h3>MATERIALES DE CALIDAD</h3>
+                                <div class="prices">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="categorie-img">
+                            <img src="images/images.jfif" alt="">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="categorie">
+                            <div class="categorie-1">
+                                <h3>PRODUCTOS</h3>
+                                <div class="prices">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="categorie-img">
+                            <img src="images/productos.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="categorie">
+                            <div class="categorie-1">
+                                <h3>AYUDA</h3>
+                                <div class="prices">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="categorie-img">
+                            <img src="images/ayuda.jfif" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </header>
+    <hr>
+
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+
+        var categoriesSwiper = new Swiper('.categories-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 10,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            },
+        });
+
+        // Carrito
+        const carrito = document.getElementById('carrito');
+        const lista = document.querySelector('#lista-carrito tbody');
+        const vaciarCarritoBtn = document.getElementById('vaciar-carrito');
+        const swiperwrapper = document.querySelector(".swiper-wrapper");
+
+        cargarEventListeners();
+        cargarcarritodesdestorage();
+
+        function cargarEventListeners() {
+            swiperwrapper.addEventListener('click', comprarElemento);
+            carrito.addEventListener('click', eliminarElemento);
+            vaciarCarritoBtn.addEventListener('click', vaciarCarrito);
+        }
+
+        function comprarElemento(e) {
+            e.preventDefault();
+            if (e.target.classList.contains('agregar-carrito')) {
+                const elemento = e.target.parentElement.parentElement;
+                leerDatosElemento(elemento);
+            }
+        }
+
+        function leerDatosElemento(elemento) {
+            const infoElemento = {
+                imagen: elemento.querySelector('img').src,
+                titulo: elemento.querySelector('h3').textContent,
+                precio: elemento.querySelector('.precio').textContent,
+                id: elemento.querySelector('a').getAttribute('data-id')
+            }
+
+            insertarCarrito(infoElemento);
+        }
+
+        function insertarCarrito(elemento) {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>
+                    <img src="${elemento.imagen}" width=100 >
+                </td>
+                <td>
+                    ${elemento.titulo}
+                </td>
+                <td>
+                    ${elemento.precio}
+                </td>
+                <td>
+                    <a href="#" class="borrar" data-id="${elemento.id}">x</a>
+                </td>
+            `;
+            lista.appendChild(row);
+        }
+
+        function eliminarElemento(e) {
+            e.preventDefault();
+            let elemento,
+                elementoId;
+
+            if(e.target.classList.contains('borrar')) {
+                e.target.parentElement.parentElement.remove();
+                elemento = e.target.parentElement.parentElement;
+                elementoId = elemento.querySelector('a').getAttribute('data-id');
+            }
+        }
+
+        function vaciarCarrito() {
+            while(lista.firstChild) {
+                lista.removeChild(lista.firstChild);
+            }
+            return false;
+        }
+    </script>
+</body>
+</html>
